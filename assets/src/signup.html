@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css/signup.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Doc</title>
+</head>
+
+<body>
+
+
+    <!-- <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="..\../index.html" class="navbar-brand">FOODIE</a>
+            <a href="login.html"><button class="btn btn-outline-primary" type="submit">LOGIN</button></a>
+        </div>
+    </nav> -->
+
+    <div class="container">
+        <center>
+            <div>
+                <i>
+                    <h2 class="heading5">WELCOME TO FOODIE</h2>
+                </i>
+            </div>
+        </center>
+
+        <div class="row justify-content-center mt-20">
+
+            <div class="col-6">
+                <i>
+                    <h3>SIGN UP</h3>
+                </i>
+                <br>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">
+                        <h5>Username </h5>
+                    </label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">
+                        <h5>DOB </h5>
+                    </label>
+                    <input type="date" class="form-control" id="DOB" placeholder="Enter Date Of Birth">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">
+                        <h5>Email address</h5>
+                    </label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">
+                        <h5>Password </h5>
+                    </label>
+                    <input type="password" class="form-control" id="password" placeholder="min 6 Digits">
+
+                </div>
+                <!-- <div class="form-group">
+                    <label for="exampleFormControlFile1">Example file input</label>
+                    <br />
+                    <input type="file" class="form-control-file" id="profile">
+                </div> -->
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">
+                        <h5>User Type</h5>
+                    </label>
+                    <select class="form-control" id="selType">
+                        <option value="admin">Admin</option>
+                        <option value="Customer">Customer</option>
+
+                    </select>
+                    <br><br>
+                    <button onclick="register()" type="submit" class="btn btn-primary">
+                        <span id="loaderText">Signup</span>
+                        <div id="loader" style="display: none;" class="spinner-border" role="status">
+                            <span class="visually-hidden"></span>
+                        </div>
+                        
+                        <a href="login.html"><button class="btn btn-outline-primary" type="submit">LOGIN</button></a>
+
+
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                    <div style="display: none;" class="progress" id="progress">
+                        <div id="bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+
+                </div>
+                <div style="display: none;" id="errorDiv" class="alert alert-danger mt-20 " role="alert">
+
+                </div>
+                <div style="display: none;" class="alert alert-success" id="successDiv" role="alert">
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyAcLXUEnEV-dtJ6XedRQcNAfwe6twIBYRk",
+                authDomain: "smit-hackathon-final.firebaseapp.com",
+                databaseURL: "https://smit-hackathon-final-default-rtdb.firebaseio.com",
+                projectId: "smit-hackathon-final",
+                storageBucket: "smit-hackathon-final.appspot.com",
+                messagingSenderId: "646621942089",
+                appId: "1:646621942089:web:13712310695149ff050a98"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script src="../js/app.js"></script>
+</body>
+
+</html>

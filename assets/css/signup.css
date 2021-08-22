@@ -1,0 +1,28 @@
+body{
+     /* background-image:  radial-gradient(rgb(212, 210, 208),rgb(204, 211, 106)); */
+     background-image: url(https://i.pinimg.com/736x/25/b3/18/25b318de768a456178248c5a9b663b58.jpg);
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    /* color: white !important; */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif!important;
+    font-weight: 200 !important;
+    
+}
+
+.btn{
+    background-color: rgb(29, 51, 49) !important;
+    color:white !important;
+}
+
+.heading5{
+    text-shadow: 2px 4px #c2b2b2;
+}
+h3{
+    color: black;
+    text-shadow: 2px 2px #c2b2b2;
+}
+
+input{
+    text-shadow: 2px 2px #c2b2b2;
+    box-shadow:  3px 3px rgb(126, 118, 118);
+}
